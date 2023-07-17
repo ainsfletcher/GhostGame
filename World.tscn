@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://World/border.png" type="Texture" id=1]
+[ext_resource path="res://Player/lil guy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/grass.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/mouse.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/wood.png" type="Texture" id=5]
+
+[sub_resource type="TileSet" id=1]
+0/name = "border.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 96, 85 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 1
+0/autotile/bitmask_flags = [ Vector2( 4, 4 ), 56, Vector2( 5, 3 ), 146, Vector2( 5, 4 ), 26 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 17 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="World" type="Node2D"]
+
+[node name="BorderCollision" type="KinematicBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BorderCollision"]
+polygon = PoolVector2Array( 5, 172, 2, 176, 320, 176, 319, 1, 0, 1, 0, 173, 4, 169, 4, 4, 16, 4, 315, 5, 316, 172 )
+
+[node name="Border" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_tile_origin = 1
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 1, 2, 0, 1, 3, 0, 2, 4, 0, 2, 5, 0, 2, 6, 0, 2, 7, 0, 2, 8, 0, 2, 9, 0, 2, 10, 0, 2, 11, 0, 2, 12, 0, 2, 13, 0, 2, 14, 0, 2, 15, 0, 2, 16, 0, 2, 17, 0, 2, 18, 0, 2, 19, 0, 5, 65536, 0, 65536, 65555, 0, 131077, 131072, 0, 65536, 131091, 0, 131077, 196608, 0, 131072, 196627, 0, 131077, 262144, 0, 131072, 262163, 0, 131077, 327680, 0, 131072, 327699, 0, 131077, 393216, 0, 131072, 393235, 0, 131077, 458752, 0, 131072, 458771, 0, 131077, 524288, 0, 131072, 524307, 0, 131077, 589824, 0, 131072, 589843, 0, 196613, 655360, 0, 262144, 655361, 0, 262146, 655362, 0, 262146, 655363, 0, 262146, 655364, 0, 262146, 655365, 0, 262146, 655366, 0, 262146, 655367, 0, 262146, 655368, 0, 262146, 655369, 0, 262146, 655370, 0, 262146, 655371, 0, 262146, 655372, 0, 262146, 655373, 0, 262146, 655374, 0, 262146, 655375, 0, 262146, 655376, 0, 262146, 655377, 0, 262148, 655378, 0, 262148, 655379, 0, 262149 )
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 5, 5 )
+scale = Vector2( 0.971787, 0.943182 )
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( -1, 0, 319, 176 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="lil guy" parent="YSort" instance=ExtResource( 2 )]
+
+[node name="mouse" parent="YSort" instance=ExtResource( 4 )]
+
+[node name="grass" type="YSort" parent="YSort"]
+
+[node name="grass" parent="YSort/grass" instance=ExtResource( 3 )]
+position = Vector2( 45, 132 )
+
+[node name="grass2" parent="YSort/grass" instance=ExtResource( 3 )]
+position = Vector2( 81, 132 )
+
+[node name="grass3" parent="YSort/grass" instance=ExtResource( 3 )]
+position = Vector2( 65, 150 )
+
+[node name="grass4" parent="YSort/grass" instance=ExtResource( 3 )]
+position = Vector2( 104, 148 )
+
+[node name="grass5" parent="YSort/grass" instance=ExtResource( 3 )]
+position = Vector2( 263, 73 )
+rotation = -1.05018
+
+[node name="grass6" parent="YSort/grass" instance=ExtResource( 3 )]
+position = Vector2( 274, 85 )
+rotation = -1.05018
